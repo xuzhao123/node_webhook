@@ -6,6 +6,8 @@ work_dir=`pwd`
 env="$1"
 publicPath="$2"
 
+echo '更新博客'
+
 # 更新博客
 if [ ! -d "./blog" ]; then
     git clone https://github.com/xuzhao123/blog.git
@@ -15,6 +17,8 @@ else
 fi
 
 cd $work_dir
+
+echo '更新hexo程序'
 
 # 更新hexo程序
 if [ ! -d "./hexo-blog" ]; then
@@ -33,12 +37,16 @@ fi
 
 cd $work_dir
 
+echo '复制md文件'
+
 # 复制md文件
 cp -r `find ./blog/ -name *.md` hexo-blog/source/_posts
 
 cd ./hexo-blog
 
 hexo generate
+
+echo '生成博客代码'
 
 mv ./public "${publicPath}"
 

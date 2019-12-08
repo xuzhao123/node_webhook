@@ -2,7 +2,7 @@ const path = require('path');
 const Koa = require('koa');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
-const { execSync, execFileSync } = require('child_process');
+const { execSync, execFile } = require('child_process');
 
 var app = new Koa();
 var router = new Router();
@@ -42,7 +42,13 @@ router.post('/', (ctx, next) => {
 
 router.get('/', (ctx, next) => {
     execSync('chmod 755 publish.sh')
-    execFileSync('./publish.sh', [env, publicPath]);
+    execFile('./publish.sh', [env, publicPath], (error, stdout, stderr) => {
+        if (error) {
+            throw error;
+        }
+
+        console.log(stdout);
+    });
     ctx.status = 200;
 });
 
