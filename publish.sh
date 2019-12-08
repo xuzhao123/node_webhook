@@ -44,7 +44,7 @@ cp -r `find ./blog/ -name *.md` hexo-blog/source/_posts
 
 cd ./hexo-blog
 
-hexo generate
+npx hexo generate
 
 echo '生成博客代码'
 
