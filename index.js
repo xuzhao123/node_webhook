@@ -25,6 +25,7 @@ function updateBlog() {
 
 router.post('/', (ctx, next) => {
     const { payload } = ctx.request.body;
+    console.log(payload)
     if (!payload) {
         return;
     }
