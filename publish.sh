@@ -48,6 +48,8 @@ npx hexo generate
 
 echo '生成博客代码'
 
-mv ./public "${publicPath}"
+mv ./public/* "${publicPath}"
+
+rm -rf ./pulic
 
 echo 'publish done'
