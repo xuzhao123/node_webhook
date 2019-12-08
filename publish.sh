@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo 'publish start'
+
 work_dir=`pwd`
 env="$1"
 publicPath="$2"
@@ -40,4 +42,4 @@ hexo generate
 
 mv ./public "${publicPath}"
 
-echo 'done'
+echo 'publish done'
