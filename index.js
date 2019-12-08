@@ -12,6 +12,17 @@ app.use(bodyParser())
 const env = process.env.NODE_ENV;
 const publicPath = env === 'development' ? path.join(__dirname, './public') : '/root/xuzhao/www/blog'
 
+function updateBlog() {
+    execSync('chmod 755 publish.sh')
+    execFile('./publish.sh', [env, publicPath], (error, stdout, stderr) => {
+        if (error) {
+            throw error;
+        }
+
+        console.log(stdout);
+    });
+}
+
 router.post('/', (ctx, next) => {
     const { payload } = ctx.request.body;
     if (!payload) {
@@ -30,25 +41,13 @@ router.post('/', (ctx, next) => {
         return;
     }
 
-    execFileSync('publish.sh');
+    updateBlog()
 
     ctx.status = 200;
-
-
-    // console.log(JSON.stringify(ctx.params, null, 2))
-    // console.log(JSON.stringify(ctx.request.body, null, 2))
-    // ctx.status = 200;
 });
 
 router.get('/', (ctx, next) => {
-    execSync('chmod 755 publish.sh')
-    execFile('./publish.sh', [env, publicPath], (error, stdout, stderr) => {
-        if (error) {
-            throw error;
-        }
-
-        console.log(stdout);
-    });
+    updateBlog()
     ctx.status = 200;
 });
 
