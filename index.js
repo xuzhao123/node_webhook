@@ -12,6 +12,9 @@ app.use(bodyParser())
 const env = process.env.NODE_ENV;
 const publicPath = env === 'development' ? path.join(__dirname, './public') : '/root/xuzhao/www/blog'
 
+/**
+ * 执行脚本更新博客
+ */
 function updateBlog() {
     execSync('chmod 755 publish.sh')
     execFile('./publish.sh', [env, publicPath], (error, stdout, stderr) => {
@@ -23,15 +26,16 @@ function updateBlog() {
     });
 }
 
+updateBlog();
+
 router.post('/', (ctx, next) => {
     const { payload } = ctx.request.body;
-    
+
     if (!payload) {
         return;
     }
 
     const data = JSON.parse(payload);
-    console.log(data.ref)
 
     if (data.ref !== 'refs/heads/master') {
         return;

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
-    "prod": "cross-env NODE_ENV=production node index.js",
-    "generate": "hexo generate"
+    "generate": "hexo generate",
+    "prod": "nohub node index.js &"
   },
   "keywords": [],
   "author": "",
