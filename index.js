@@ -25,12 +25,15 @@ function updateBlog() {
 
 router.post('/', (ctx, next) => {
     const { payload } = ctx.request.body;
-
+    
     if (!payload) {
         return;
     }
 
-    if (payload.ref !== 'refs/heads/master') {
+    const data = JSON.parse(payload);
+    console.log(data.ref)
+
+    if (data.ref !== 'refs/heads/master') {
         return;
     }
 

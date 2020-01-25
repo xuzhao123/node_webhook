@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
-    "prod": "cross-env NODE_ENV=production node index.js"
+    "prod": "cross-env NODE_ENV=production node index.js",
+    "generate": "hexo generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^6.0.3",
+    "hexo": "^4.2.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0"

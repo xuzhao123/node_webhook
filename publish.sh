@@ -39,6 +39,9 @@ cd $work_dir
 
 echo '复制md文件'
 
+# 清空原有_post目录
+rm -rf hexo-blog/source/_posts
+mkdir hexo-blog/source/_posts
 # 复制md文件
 cp -r `find ./blog/ -name *.md` hexo-blog/source/_posts
 
