@@ -51,6 +51,10 @@ npx hexo generate
 
 echo '生成博客代码'
 
+echo $publicPath
+
+rm -rf $publicPath
+
 mv ./public/ "${publicPath}"
 
 rm -rf ./public

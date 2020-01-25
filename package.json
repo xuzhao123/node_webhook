@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node index.js",
     "generate": "hexo generate",
-    "prod": "nohub node index.js &"
+    "prod": "nohup node index.js &"
   },
   "keywords": [],
   "author": "",
